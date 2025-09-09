@@ -1,12 +1,14 @@
-
-
-
-
+ Testing Location-Based Features with Fake GPS
 
 https://github.com/user-attachments/assets/c1b3195c-3833-4eaa-9d4b-b0cadef68c68
 
+This video shows how to test the location-based notification and reminder features of the app using a fake GPS location app on an Android device.
 
-
+## What the video demonstrates:
+Enabling Developer Options and selecting a mock location app to provide fake GPS coordinates.
+Using the fake GPS app to set custom latitude and longitude values.
+Verifying that the app correctly triggers location-based notifications when simulated near the memo location.
+Testing geofencing and reminder functionality without physically traveling.
 
 
 implementation 'com.google.android.gms:play-services-maps:18.2.0'# android-codelab
