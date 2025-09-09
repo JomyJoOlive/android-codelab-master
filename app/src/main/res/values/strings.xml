@@ -10,4 +10,8 @@
     <string name="memo_text_empty_error">Please provide a memo description</string>
     <string name="location_required_error">Location is required</string>
     <string name="select_location">Select Location</string>
+    <string name="enable_location_title">Enable Location</string>
+    <string name="enable_location_message">To receive location-based notifications, please enable location services.</string>
+    <string name="enable_location_positive">Enable</string>
+    <string name="cancel">Cancel</string>
 </resources>

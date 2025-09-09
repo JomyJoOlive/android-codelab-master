@@ -1,5 +1,7 @@
 package com.sap.codelab.view.home
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sap.codelab.model.Memo
@@ -18,6 +20,9 @@ internal class HomeViewModel : ViewModel() {
     private var isShowAll = false
     private val _memos: MutableStateFlow<List<Memo>> = MutableStateFlow(listOf())
     val memos: StateFlow<List<Memo>> = _memos
+
+    private val _locationEnabled = MutableLiveData<Boolean>()
+    val locationEnabled: LiveData<Boolean> get() = _locationEnabled
 
     /**
      * Loads all memos.
@@ -49,16 +54,17 @@ internal class HomeViewModel : ViewModel() {
 
     /**
      * Updates the given memo, marking it as done if isChecked is true.
-     *
-     * @param memo      - the memo to update.
-     * @param isChecked - whether the memo has been checked (marked as done).
      */
     fun updateMemo(memo: Memo, isChecked: Boolean) {
         ScopeProvider.application.launch(Dispatchers.Default) {
-            // We'll only forward the update if the memo has been checked, since we don't offer to uncheck memos right now
             if (isChecked) {
                 Repository.saveMemo(memo.copy(isDone = true))
             }
         }
+    }
+
+    /** Updates the LiveData with location enabled or disabled */
+    fun updateLocationEnabledStatus(enabled: Boolean) {
+        _locationEnabled.value = enabled
     }
 }
